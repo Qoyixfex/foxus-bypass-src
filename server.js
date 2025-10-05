@@ -1,3 +1,5 @@
+// i use bypass vip apikey for this bypass website, but u also can change it to other apiikey (using header)
+
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
@@ -10,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const VIP_API_KEY = 'c7febd80-079a-4466-ac35-c7b14d3d190c';
+const VIP_API_KEY = '';
 const VIP_API_URL = 'https://api.bypass.vip/premium/bypass';
 
 app.post('/api/process', async (req, res) => {
@@ -40,4 +42,5 @@ app.get('*', (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+
 });
