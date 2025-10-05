@@ -1,4 +1,4 @@
-// i use bypass vip apikey for this bypass website, but u also can change it to other apiikey (using header)
+// i use bypass vip apikey for this bypass website, but u also can change it to other apikey (using header)
 
 const express = require('express');
 const axios = require('axios');
@@ -44,3 +44,4 @@ app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 
 });
+
