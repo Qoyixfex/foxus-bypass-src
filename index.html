@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foxuss Bypasser</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✧</text></svg>">
+    <style>
+        :root {
+            --primary: #4285F4;
+            --secondary: #EA4335;
+            --dark: #0a0e1a;
+            --darker: #080c15;
+            --light: #FFFFFF;
+            --error: #EA4335;
+            --success: #34A853;
+            --matrix: #0F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            text-shadow: 0 0 5px rgba(66, 133, 244, 0.3);
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .navbar {
+            background: rgba(10, 14, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(66, 133, 244, 0.3);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .contact-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 10px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            margin: 80px auto 0;
+            box-sizing: border-box;
+        }
+
+        .main-panel {
+            background: rgba(10, 14, 26, 0.85);
+            border-radius: 16px;
+            padding: 30px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(66, 133, 244, 0.3);
+            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-panel::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(66, 133, 244, 0.1) 0%, rgba(10, 14, 26, 0) 70%);
+            z-index: -1;
+            animation: rotate 20s linear infinite;
+        }
+
+        .main-panel h1 {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-shadow: 0 2px 10px rgba(66, 133, 244, 0.3);
+            letter-spacing: 2px;
+        }
+
+        .link-input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(66, 133, 244, 0.5);
+            background: rgba(20, 25, 40, 0.8);
+            color: var(--light);
+            margin-bottom: 25px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .link-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .process-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .process-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(66, 133, 244, 0.4);
+        }
+
+        .process-btn:active {
+            transform: translateY(1px);
+        }
+
+        #result {
+            margin-top: 25px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--light);
+            word-wrap: break-word;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: rgba(20, 25, 40, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+            letter-spacing: 1px;
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+            letter-spacing: 1px;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .copy-btn.copied {
+            background: var(--success);
+            transform: scale(1.05);
+        }
+
+        .loading {
+            display: none;
+            margin: 20px auto;
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(66, 133, 244, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            width: 100%;
+            margin: 0 auto;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .card {
+            background: rgba(10, 14, 26, 0.85);
+            border-radius: 12px;
+            padding: 25px;
+            flex: 1;
+            min-width: 300px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(66, 133, 244, 0.3);
+            animation: fadeInUp 0.6s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(66, 133, 244, 0.2);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .card h2 {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+        }
+
+        .card p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.5px;
+        }
+
+        .service-list, .card ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        .service-list li, .card ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 0.5px;
+        }
+
+        .bullet {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            margin-right: 12px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .footer {
+            width: 100%;
+            margin-top: 50px;
+            padding: 25px 0;
+            text-align: center;
+            border-top: 1px solid rgba(66, 133, 244, 0.2);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .footer-content {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .heart {
+            color: var(--error);
+            display: inline-block;
+            animation: heartbeat 1.5s ease infinite;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .main-panel {
+                padding: 20px;
+            }
+            
+            .main-panel h1 {
+                font-size: 2rem;
+            }
+            
+            .card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+
+
+    <div class="container">
+        <div class="main-panel">
+            <h1><span class="icon">Foxuss Bypasser</h1>
+            <input type="text" placeholder="Enter your link here" class="link-input" id="linkInput">
+            <button class="process-btn" id="processBtn">
+                Bypass
+            </button>
+            <div class="loading" id="loading"></div>
+            <p id="result" style="display: none;"></p>
+            <button class="copy-btn" id="copyBtn" style="display: none;">Copy</button>
+        </div>
+
+        <div class="cards-container">
+            <div class="card">
+                <h2>Supported Links</h2>
+                <p>Supported Links:</p>
+                <ul class="service-list">
+                    <li><span class="bullet"></span>Linkvertise</li>
+                    <li><span class="bullet"></span>Admaven</li>
+                    <li><span class="bullet"></span>Lootlabs</li>
+                    <li><span class="bullet"></span>And Many More...</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Why Foxus Bypass?</h2>
+                <p>Because:</p>
+                <ul>
+                    <li><span class="bullet"></span> Ultra-Fast API with Low Latency</li>
+                    <li><span class="bullet"></span> Optimized for High Success & Stability</li>
+                    <li><span class="bullet"></span> End-to-End Encryption & Secure Requests</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Community</h2>
+                <p>Join our community</p>
+                <a href="https://discord.gg/invite" class="contact-btn" style="display: inline-block; margin-top: 15px;">DISCORD SERVER</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            Made by CodeE4X | AKA StarX Owner <!--Serah ini mau diganti ato tak-->
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+         const processBtn = document.getElementById("processBtn");
+        const linkInput = document.getElementById("linkInput");
+        const resultBox = document.getElementById("result");
+        const copyBtn = document.getElementById("copyBtn");
+        const loading = document.getElementById("loading");
+
+        processBtn.addEventListener("click", async () => {
+            const link = linkInput.value.trim();
+            if (!link) {
+                showError("Please enter a valid link.");
+                return;
+            }
+
+            try {
+                startProcessing();
+                
+                const response = await fetch('/api/process', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ url: link })
+                });
+
+                const data = await response.json();
+                
+                if (data.error) {
+                    showError(data.error);
+                } else if (data.result) {
+                    showResult(data.result);
+                } else {
+                    showError("No result found");
+                }
+            } catch (error) {
+                showError("Connection error. Please try again.");
+            } finally {
+                stopProcessing();
+            }
+        });
+
+        function startProcessing() {
+            processBtn.disabled = true;
+            processBtn.style.opacity = "0.7";
+            loading.style.display = "block";
+            resultBox.style.display = "none";
+            copyBtn.style.display = "none";
+        }
+
+        function stopProcessing() {
+            processBtn.disabled = false;
+            processBtn.style.opacity = "1";
+            loading.style.display = "none";
+        }
+
+        function showResult(result) {
+            resultBox.style.color = "#fff";
+            resultBox.style.display = "block";
+            resultBox.textContent = `RESULT: ${result}`;
+            copyBtn.style.display = "inline-block";
+        }
+
+        function showError(message) {
+            resultBox.style.color = "var(--error)";
+            resultBox.style.display = "block";
+            resultBox.textContent = `ERROR: ${message}`;
+            copyBtn.style.display = "none";
+        }
+
+        copyBtn.addEventListener("click", () => {
+            const resultText = resultBox.textContent.replace("RESULT: ", "").trim();
+            if (resultText) {
+                navigator.clipboard.writeText(resultText).then(() => {
+                    copyBtn.textContent = "COPIED!";
+                    copyBtn.classList.add("copied");
+                    setTimeout(() => {
+                        copyBtn.textContent = "COPY RESULT";
+                        copyBtn.classList.remove("copied");
+                    }, 2000);
+                });
+            }
+        });
+
+particlesJS("particles-js", {
+    particles: {
+        number: { value: 150, density: { enable: true, value_area: 1000 } },
+        color: { value: "#00ff00" }, 
+        shape: { 
+            type: "char",
+            character: {
+                value: ["0", "1", "A", "B", "C", "D", "E", "F"], 
+                font: "monospace",
+                style: "bold",
+                weight: "400"
+            }
+        },
+        opacity: { 
+            value: 0.7,
+            random: true,
+            anim: { enable: true, speed: 1.5, opacity_min: 0.1 }
+        },
+        size: { 
+            value: 6, 
+            random: true,
+            anim: { enable: true, speed: 3, size_min: 0.2 }
+        },
+        line_linked: { 
+            enable: false 
+        },
+        move: { 
+            enable: true, 
+            speed: 1.5, 
+            direction: "bottom", 
+            random: true, 
+            straight: false, 
+            out_mode: "out" 
+        }
+    },
+    interactivity: {
+        detect_on: "canvas",
+        events: {
+            onhover: { enable: true, mode: "bubble" },
+            onclick: { enable: true, mode: "repulse" }
+        },
+        modes: {
+            bubble: { distance: 150, size: 8, duration: 2, opacity: 1 },
+            repulse: { distance: 100, duration: 0.4 }
+        }
+    }
+});
+
+    </script>
+</body>
+</html>
